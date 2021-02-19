@@ -12,7 +12,7 @@ import altair as alt
 st.write(str(time.strftime('%Y-%m-%d %H:%M',time.localtime(time.time()))))
 
 #engine = sqla.create_engine('mysql+pymsql://admin:T0rv4ld$mhf@192.168.1.101/housework?charset=utf8')
-eng = sqla.create_engine('mysql+pymysql://admin:4dm1n@serveis.alme/test?charset=utf8')
+eng = sqla.create_engine('mysql+pymysql://admin:T0rv4ld$mhf@192.168.1.101:3307/housework?charset=utf8')
 
 today = str(time.strftime('%Y-%m-%d',time.localtime(time.time())))
 
