@@ -92,7 +92,7 @@ def add_task(x):
 				st.write('任务添加成功，请刷新页面')
 			except:
 				st.write('无法添加任务')
-		con.close()
+		cursor.close()
 	st.empty()
 
 
@@ -187,10 +187,11 @@ if len(df):
 	option = st.sidebar.selectbox(
 	'今日已完成家务',
 	df['task'].unique())
-	st.sidebar.write('**', option, "**")
-	st.sidebar.write('此任务由*', (df[df['task'] == option]['first_name'].tolist()[0]), '*完成')
-	st.sidebar.write('耗时', (df[df['task'] == option]['duration'].tolist()[0]), '分钟')
-	st.sidebar.write('完成时间: ', (df[df['task'] == option]['timestamp'].tolist()[0]))
+	st.sidebar.text(option)
+	st.sidebar.text('此任务由 ' + (df[df['task'] == option]['first_name'].tolist()[0]) + ' 完成')
+	st.sidebar.text('耗时 ' + str(df[df['task'] == option]['duration'].tolist()[0]) + ' 分钟')
+	st.sidebar.text('完成时间: ' + str(df[df['task'] == option]['timestamp'].tolist()[0]))
 
 else:
-	st.sidebar.write("*暂无*")
+	st.sidebar.text("暂无")
+
