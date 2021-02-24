@@ -13,6 +13,7 @@ st.write(str(time.strftime('%Y-%m-%d %H:%M',time.localtime(time.time()))))
 
 #engine = sqla.create_engine('mysql+pymsql://admin:T0rv4ld$mhf@192.168.1.101/housework?charset=utf8')
 eng = sqla.create_engine('mysql+pymysql://admin:T0rv4ld$mhf@192.168.1.101:3307/housework?charset=utf8')
+#eng = sqla.create_engine('mysql+pymysql://admin:4dm1n@serveis.alme/test?charset=utf8')
 
 today = str(time.strftime('%Y-%m-%d',time.localtime(time.time())))
 
@@ -30,7 +31,8 @@ if len(df):
 	name = st.selectbox(
 	'我是',nm['first_name'].unique())
 
-	option = st.selectbox(
+	st_em = st.empty()
+	option = st_em.selectbox(
 	'今日待完成家务',
 	df['descrip'].unique())
 
@@ -61,8 +63,11 @@ if len(df):
 		except:
 			pass
 		st.write(name, '今日总家务时间: ', int(total), 'min')
-	if st.button('完成'):
+	ok_bt = st.empty()
+	if ok_bt.button('完成'):
 		complete_task()
+		st_em.empty()
+		ok_bt.empty()
 		"*-请刷新页面以继续-*"
 
 
@@ -93,7 +98,7 @@ def add_task(x):
 			except:
 				st.write('无法添加任务')
 		cursor.close()
-	st.empty()
+#		st_em1.empty()
 
 
 #st.write("查看此期间完成的家务：")
@@ -194,4 +199,3 @@ if len(df):
 
 else:
 	st.sidebar.text("暂无")
-
